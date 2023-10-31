@@ -1,0 +1,55 @@
+<div class="container">
+
+    <span class="back" (click)="backToList()">
+        <mat-icon>arrow_back</mat-icon>
+        Back to List
+    </span>
+
+    <div class="details">
+        <h1>Details</h1>
+
+        <div class="share">
+            <p>Share with these apps</p>
+            <share-buttons theme="circles-dark"
+                [include]="['copy', 'facebook', 'email', 'messenger', 'linkedin', 'telegram', 'whatsapp']"
+                [showIcon]="true" [showText]="false" [url]="generateLinkShare()"
+                description="Share Buttons" class="pt-5">
+            </share-buttons>
+        </div>
+
+        <div class="card" *ngIf="(loading$ | async) === false">
+            <div class="image">
+                <img [src]="details.urlFoto ?? 'https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg'"
+                    alt="photo">
+                <h2>{{ details.nome }}</h2>
+            </div>
+
+            <div class="info">
+
+                <span><b>Idade: </b> {{ details.idade }} Anos</span><br>
+                <span><b>Sexo: </b> {{ details.sexo }}</span><br>
+
+                <span><b>Data Desaparecimento: </b> <span>{{ details.ultimaOcorrencia.dtDesaparecimento |
+                        date:'dd/MM/yyyy'
+                        }}</span></span><br>
+                <span><b>Local de Desaparecimento: </b> {{ details.ultimaOcorrencia.localDesaparecimentoConcat}}
+                </span><br>
+
+                <p><b>Informação: </b> <span>{{ details.ultimaOcorrencia.ocorrenciaEntrevDesapDTO?.informacao || 'Não
+                        informado'
+                        }}</span></p>
+                <p><b>Vestimenta: </b> <span>{{
+                        details.ultimaOcorrencia.ocorrenciaEntrevDesapDTO?.vestimentasDesaparecido ||
+                        'Não informado' }}</span></p>
+
+                <div *ngFor="let item of details.ultimaOcorrencia.listaCartaz; index as i">
+                    <a [href]="item.urlCartaz">Download Cartaz {{ i + 1}}</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <mat-spinner *ngIf="(loading$ | async)"></mat-spinner>
+    </div>
+</div>

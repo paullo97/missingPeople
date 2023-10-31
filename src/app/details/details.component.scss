@@ -1,0 +1,86 @@
+.container
+{
+    padding-top: 5%;
+
+    .back
+    {
+        margin-left: 20px;
+        margin-bottom: -20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: 5px;
+        border: 1px solid black;
+        width: 120px;
+        padding: 6px;
+        border-radius: 6px;
+
+        background-color: white;
+
+        &:hover
+        {
+            color: white;
+      box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+
+            background-color: rgba($color: #d88282dc, $alpha: 1.0);
+        }
+    }
+}
+
+.details
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: -70px;
+
+    .share
+    {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        border: 1px solid black;
+        width: 70vw;
+        border-radius: 5px;
+        padding: 10px 0;
+        background-color: rgba(254, 255, 189, 0.719);
+        .image
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img
+            {
+                width: 400px;
+                height: 400px;
+                border-radius: 20px;
+            }
+
+            h1
+            {
+                text-wrap: wrap;
+                width: 100px;
+            }
+        }
+
+        .info
+        {
+            width: 40%;
+            font-size: 1.5em;
+        }
+    }
+}
