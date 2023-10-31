@@ -2,256 +2,31 @@
     <div class="pagination">
         <p>Pagination</p>
     </div>
-    <div class="list">
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
+    <div>
+        <div *ngIf="loading$ | async">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="list" *ngIf="(loading$ | async) === false">
+            <mat-card *ngFor="let item of listMissingPerson" (click)="details(item)">
+                <img mat-card-image [src]="item.urlFoto ?? 'https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg'" alt="Photo">
+                <mat-card-content>
+                    <div style="text-align: center;">
+                        <h1>{{ item.nome }}</h1>
 
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
+                        <div class="info">
+                            <div style="line-height: 5px;">
+                                <p>{{ item.idade }} Anos</p>
+                                <p>{{ item.sexo | titlecase }}</p>
+                            </div>
 
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
+                            <div style="line-height: 21px;">
+                                <span><b>Data: </b></span><br>
+                                <span>{{ item.ultimaOcorrencia.dtDesaparecimento | date }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <img mat-card-image src="https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <div style="text-align: center;">
-                    <h1>Calabreso da Silva</h1>
-
-                    <div class="info">
-                        <div style="line-height: 5px;">
-                            <p>26 Anos</p>
-                            <p>Masculino</p>
-                        </div>
-
-                        <div style="line-height: 21px;">
-                            <span><b>Data: </b></span><br>
-                            <span>31/10/2023</span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
