@@ -1,0 +1,7 @@
+<div class="container">
+    <app-filter></app-filter>
+    <app-container
+        [listMissingPerson]="(listMissingPerson$ | async)?.content || []"
+        (checkDetails)="details($event)">
+    </app-container>
+</div>
