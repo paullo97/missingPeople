@@ -1,0 +1,39 @@
+.content {
+  margin-top: 80px;
+  .pagination {
+    display: flex;
+    justify-content: end;
+    margin-right: 50px;
+    margin-bottom: -70px;
+  }
+
+  .list {
+    margin-top: 7%;
+    height: 70vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 40px;
+
+    mat-card {
+      width: 19%;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+      z-index: 1;
+    }
+
+    mat-card:hover {
+      box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .info {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}
