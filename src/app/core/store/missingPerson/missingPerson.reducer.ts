@@ -1,5 +1,5 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { filterList, loadMissingPersons, loadMissingPersonsError, loadMissingPersonsSuccess } from './missingPerson.actions';
+import { checkDetails, checkDetailsSuccess, clearDetails, filterList, loadMissingPersons, loadMissingPersonsError, loadMissingPersonsSuccess } from './missingPerson.actions';
 import { missingPerson } from './missingPerson.store';
 
 
@@ -25,6 +25,19 @@ const reducer: ActionReducer<Partial<missingPerson>, Action> = createReducer(
     on(filterList, (state) => ({
         ...state,
         loading: true
+    })),
+    on(checkDetails, (state) => ({
+        ...state,
+        loading: true
+    })),
+    on(checkDetailsSuccess, (state, action) => ({
+        ...state,
+        loading: false,
+        details: action.response
+    })),
+    on(clearDetails, (state) => ({
+        ...state,
+        details: undefined
     }))
 );
 

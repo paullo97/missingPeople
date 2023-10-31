@@ -12,3 +12,8 @@ export const getMissingPersonList = createSelector(
     getMissingPersonState,
     (store: missingPerson) => store.response
 );
+
+export const getDetailsPerson = createSelector(
+    getMissingPersonState,
+    (store: missingPerson) => store.details
+);

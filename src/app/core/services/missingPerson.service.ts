@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BASE_API, BASE_API_1 } from 'src/environments/constants';
 import { IFilter } from '../models/filter.model';
-import { Response } from '../models/missingPerson.model';
+import { Content, Response } from '../models/missingPerson.model';
 
 @Injectable()
 export class MissingPersonService
@@ -42,8 +42,8 @@ export class MissingPersonService
         return this.http.get<Response>(url);
     }
 
-    public getDetails(idPerson: string): Observable<Response>
+    public getDetails(idPerson: string): Observable<Content>
     {
-        return this.http.get<Response>(`${BASE_API}${idPerson}`)
+        return this.http.get<Content>(`${BASE_API}${idPerson}`)
     }
 }

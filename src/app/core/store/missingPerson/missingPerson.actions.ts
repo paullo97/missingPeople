@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { IFilter } from '../../models/filter.model';
-import { Response } from '../../models/missingPerson.model';
+import { Content, Response } from '../../models/missingPerson.model';
 import { storeTag } from './missingPerson.store';
 
 export const loadMissingPersons = createAction(
@@ -23,4 +23,22 @@ export const filterList = createAction(
     props<{
         filter: IFilter;
     }>()
+);
+
+export const checkDetails = createAction(
+    `${storeTag} Load Details`,
+    props<{
+        id: string;
+    }>()
+);
+
+export const checkDetailsSuccess = createAction(
+    `${storeTag} Load Details Success`,
+    props<{
+        response: Content;
+    }>()
+);
+
+export const clearDetails = createAction(
+    `${storeTag} Clear Details Store`
 );
