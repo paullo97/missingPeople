@@ -7,4 +7,5 @@ export interface missingPerson
     loading: boolean;
     response: Response;
     details: Content;
+    pageActual: number;
 }

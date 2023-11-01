@@ -1,6 +1,13 @@
 <div class="content">
-    <div class="pagination">
-        <p>Pagination</p>
+    <div class="pagination" *ngIf="(loading$ | async) === false">
+        <mat-paginator #paginator
+               (page)="handlePageEvent($event)"
+               [length]="(pageLength$ | async)"
+               [pageSize]="12"
+               [showFirstLastButtons]="false"
+               [pageIndex]="(pageIndex$ | async)">
+        </mat-paginator>
+
     </div>
     <div>
         <div *ngIf="loading$ | async">

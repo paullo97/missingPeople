@@ -42,3 +42,10 @@ export const checkDetailsSuccess = createAction(
 export const clearDetails = createAction(
     `${storeTag} Clear Details Store`
 );
+
+export const changePage = createAction(
+    `${storeTag} Change Page`,
+    props<{
+        page: number;
+    }>()
+);

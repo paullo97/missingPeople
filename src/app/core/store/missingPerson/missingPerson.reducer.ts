@@ -1,10 +1,11 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { checkDetails, checkDetailsSuccess, clearDetails, filterList, loadMissingPersons, loadMissingPersonsError, loadMissingPersonsSuccess } from './missingPerson.actions';
+import { changePage, checkDetails, checkDetailsSuccess, clearDetails, filterList, loadMissingPersons, loadMissingPersonsError, loadMissingPersonsSuccess } from './missingPerson.actions';
 import { missingPerson } from './missingPerson.store';
 
 
 export const initialState: Partial<missingPerson> = {
-    loading: false
+    loading: false,
+    pageActual: 0
 };
 
 const reducer: ActionReducer<Partial<missingPerson>, Action> = createReducer(
@@ -38,6 +39,11 @@ const reducer: ActionReducer<Partial<missingPerson>, Action> = createReducer(
     on(clearDetails, (state) => ({
         ...state,
         details: undefined
+    })),
+    on(changePage, (state, action) => ({
+        ...state,
+        pageActual: action.page,
+        loading: true
     }))
 );
 

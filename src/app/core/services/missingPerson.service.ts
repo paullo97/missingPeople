@@ -13,9 +13,9 @@ export class MissingPersonService
     )
     { }
 
-    public getMissingPerson(): Observable<Response>
+    public getMissingPerson(page: number = 0): Observable<Response>
     {
-        return this.http.get<Response>(`${BASE_API_1}`);
+        return this.http.get<Response>(`${BASE_API_1}&pagina=${page}`);
     }
 
     public getFiltered(filters: IFilter): Observable<Response>

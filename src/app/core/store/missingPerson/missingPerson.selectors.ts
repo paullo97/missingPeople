@@ -17,3 +17,13 @@ export const getDetailsPerson = createSelector(
     getMissingPersonState,
     (store: missingPerson) => store.details
 );
+
+export const getTotalElements = createSelector(
+    getMissingPersonState,
+    (store: missingPerson) => store.response.totalElements
+);
+
+export const getPageActual = createSelector(
+    getMissingPersonState,
+    (store: missingPerson) => store.pageActual
+);

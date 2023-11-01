@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { ContainerComponent } from './container/container.component';
@@ -29,7 +30,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         MatCardModule,
         MatProgressSpinnerModule,
         ReactiveFormsModule,
-        CommonModule
+        CommonModule,
+        MatPaginatorModule
     ],
     exports: [
         ToolbarComponent,
