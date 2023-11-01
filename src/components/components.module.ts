@@ -9,10 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ContainerComponent } from './container/container.component';
 import { FilterComponent } from './filter/filter.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-
 @NgModule({
     declarations: [
         ToolbarComponent,
@@ -31,7 +31,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         MatProgressSpinnerModule,
         ReactiveFormsModule,
         CommonModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatSnackBarModule
     ],
     exports: [
         ToolbarComponent,

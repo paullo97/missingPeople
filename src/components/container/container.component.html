@@ -13,7 +13,7 @@
         <div *ngIf="loading$ | async">
             <mat-spinner></mat-spinner>
         </div>
-        <div class="list" *ngIf="(loading$ | async) === false">
+        <div class="list" *ngIf="(loading$ | async) === false && ((pageLength$ | async) || 0) > 0">
             <mat-card *ngFor="let item of listMissingPerson" (click)="details(item)">
                 <img mat-card-image [src]="item.urlFoto ?? 'https://desaparecidos.pjc.mt.gov.br/assets/img/sem-foto.svg'" alt="Photo">
                 <mat-card-content>
@@ -34,6 +34,9 @@
                     </div>
                 </mat-card-content>
             </mat-card>
+        </div>
+        <div *ngIf="(loading$ | async) === false && ((pageLength$ | async) || 0) === 0">
+            <img src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result.gif">
         </div>
     </div>
 </div>

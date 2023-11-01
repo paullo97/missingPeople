@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { filterList, loadMissingPersons } from 'src/app/core/store/missingPerson/missingPerson.actions';
 import { missingPerson } from 'src/app/core/store/missingPerson/missingPerson.store';
@@ -10,7 +11,10 @@ import { missingPerson } from 'src/app/core/store/missingPerson/missingPerson.st
 })
 export class FilterComponent
 {
-    constructor(private readonly store: Store<missingPerson>)
+    constructor(
+        private readonly store: Store<missingPerson>,
+        private _snackBar: MatSnackBar
+    )
     { }
 
     public name: string = '';
@@ -30,9 +34,10 @@ export class FilterComponent
 
     public searchPerson(): void
     {
-        if(!this.name.length && !this.initialAge.length && !this.finalAge.length && !this.gender.length)
+        if((!this.name || this.name.length === 0) && (!this.initialAge || this.initialAge.length === 0) && (!this.finalAge || this.finalAge.length === 0) && (!this.gender || this.gender.length === 0))
         {
-            console.log('FIX ME -> You not search with parameters empty');
+
+            this._snackBar.open('You not search with parameters empty', 'OK', { duration: 1500, horizontalPosition: 'center', verticalPosition: 'top' });
             return;
         }
 
@@ -40,19 +45,18 @@ export class FilterComponent
         {
             if(this.finalAge.length !== 0)
             {
-                console.log("FIX ME -> You not set up initial age smaller to final age");
+                this._snackBar.open('You not set up initial age smaller to final age', 'OK', { duration: 1500, horizontalPosition: 'center', verticalPosition: 'top' });
                 return;
             }
         }
 
         this.store.dispatch(filterList({
             filter: {
-                ...(this.name.length !== 0 && { name: this.name }),
-                ...(this.initialAge.length !== 0 && { minimumAge: this.initialAge }),
-                ...(this.finalAge.length !== 0 && { maximumAge: this.finalAge }),
-                ...(this.gender.length !== 0 && { gender: this.gender })
+                ...((!!this.name && this.name.length !== 0) && { name: this.name }),
+                ...((!!this.initialAge && this.initialAge.length !== 0) && { minimumAge: this.initialAge }),
+                ...((!!this.finalAge && this.finalAge.length !== 0) && { maximumAge: this.finalAge }),
+                ...((!!this.gender && this.gender.length !== 0) && { gender: this.gender })
             }
         }));
-
     }
 }
