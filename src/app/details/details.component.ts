@@ -54,11 +54,11 @@ export class DetailsComponent implements OnInit, OnDestroy
 
     public backToList(): void
     {
-        this.route.navigateByUrl('');
+        window.history.back();
     }
 
     public generateLinkShare(): string
     {
-        return `http://localhost:4200/details/${this.idPerson}`;
+        return window.location.href;
     }
 }
