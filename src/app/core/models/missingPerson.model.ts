@@ -1,4 +1,5 @@
-export interface Response {
+export interface Response
+{
     content: Array<Content>;
     pageable: Pageable;
     last: boolean;
@@ -10,24 +11,27 @@ export interface Response {
     number: number;
     size: number;
     empty: boolean;
-  }
+}
 
-  export interface Pageable {
+export interface Pageable
+{
     sort: Sort;
     pageNumber: number;
     pageSize: number;
     offset: number;
     paged: boolean;
     unpaged: boolean;
-  }
+}
 
-  export interface Sort {
+export interface Sort
+{
     unsorted: boolean;
     sorted: boolean;
     empty: boolean;
-  }
+}
 
-  export interface Content {
+export interface Content
+{
     id: number;
     nome: string;
     idade: number;
@@ -35,19 +39,27 @@ export interface Response {
     vivo: boolean;
     urlFoto?: string;
     ultimaOcorrencia: UltimaOcorrencia;
-  }
+}
 
-  export interface UltimaOcorrencia {
+export interface UltimaOcorrencia
+{
     dtDesaparecimento: string;
-    dataLocalizacao?: any;
+    dataLocalizacao?: string;
     encontradoVivo: boolean;
     localDesaparecimentoConcat: string;
     ocorrenciaEntrevDesapDTO?: OcorrenciaEntrevDesapDTO;
-    listaCartaz?: any;
+    listaCartaz?: Array<IListaCartaz>;
     ocoId: number;
-  }
+}
 
-  export interface OcorrenciaEntrevDesapDTO {
+export interface OcorrenciaEntrevDesapDTO
+{
     informacao: string;
     vestimentasDesaparecido: string;
-  }
+}
+
+export interface IListaCartaz
+{
+    urlCartaz: string;
+    tipoCartaz: string;
+}

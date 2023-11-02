@@ -59,6 +59,24 @@ export class DetailsComponent implements OnInit, OnDestroy
 
     public generateLinkShare(): string
     {
-        return window.location.href;
+        const linkPhoto: string = this.details.urlFoto || 'Uninformed';
+        return `If you want to see a photo here is the link - ${linkPhoto}`;
+    }
+
+    public generateDescriptionShare(): string
+    {
+        const { sexo, idade } = this.details;
+        const { ocorrenciaEntrevDesapDTO } = this.details.ultimaOcorrencia;
+        const ultimaOcorrencia = this.details.ultimaOcorrencia || {};
+        const { vestimentasDesaparecido, informacao } = ocorrenciaEntrevDesapDTO || {};
+
+        const clothing = vestimentasDesaparecido || 'Uninformed';
+        const information = informacao || 'Uninformed';
+        const date = ultimaOcorrencia.dtDesaparecimento
+            ? new Date(ultimaOcorrencia.dtDesaparecimento).toLocaleDateString()
+            : 'Uninformed';
+        const linkPoster = (ultimaOcorrencia.listaCartaz && ultimaOcorrencia.listaCartaz[ 0 ] && ultimaOcorrencia.listaCartaz[ 0 ].urlCartaz) || 'Uninformed';
+
+        return decodeURI(`Did you see that person? Please, contact me!\nClothing: ${clothing}\nInformation: ${information}\nDate: ${date}\nGender: ${sexo}\nAge: ${idade} years\nLink Poster: ${linkPoster}\n`);
     }
 }
